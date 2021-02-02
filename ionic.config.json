@@ -1,0 +1,7 @@
+{
+  "name": "cache-call",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}
