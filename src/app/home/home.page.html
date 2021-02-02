@@ -19,13 +19,17 @@
   <ion-button (click)="clearCache()" expand="block" fill="clear" shape="round">
     Clear cache
   </ion-button>
+  <ion-button (click)="clearView()" expand="block" fill="clear" shape="round">
+    Clear view
+  </ion-button>
 
   <ion-list>
     <ion-item *ngFor="let image of apiData">
       <ion-thumbnail slot="start">
-        <img [src]=" 'https://picsum.photos/id/' + image.id +'/100/100'" />
+        <img-loader [src]=" 'https://picsum.photos/id/' + image.id +'/100/100'"></img-loader>
       </ion-thumbnail>
       <ion-label>
+
         <h2>{{image.author}}</h2>
         <a [href]="image.download_url" target="_blank">{{image.download_url}}</a>
       </ion-label>

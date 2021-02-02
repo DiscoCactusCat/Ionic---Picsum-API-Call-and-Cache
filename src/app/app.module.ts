@@ -9,6 +9,9 @@ import { AppRoutingModule } from './app-routing.module';
 
 import { HttpClientModule } from '@angular/common/http';
 import { CacheModule } from 'ionic-cache';
+
+import { IonicImageLoaderModule } from 'ionic-image-loader-v5';
+import { WebView } from '@ionic-native/ionic-webview/ngx';
 @NgModule({
   declarations: [AppComponent],
   entryComponents: [],
@@ -18,8 +21,9 @@ import { CacheModule } from 'ionic-cache';
     AppRoutingModule,
     HttpClientModule,
     CacheModule.forRoot(),
+    IonicImageLoaderModule,
   ],
-  providers: [{ provide: RouteReuseStrategy, useClass: IonicRouteStrategy }],
+  providers: [{ provide: RouteReuseStrategy, useClass: IonicRouteStrategy },  WebView],
   bootstrap: [AppComponent],
 })
 export class AppModule {}
