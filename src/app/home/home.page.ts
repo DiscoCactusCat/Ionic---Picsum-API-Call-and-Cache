@@ -2,6 +2,8 @@ import { CacheService } from 'ionic-cache';
 
 import { HttpClient } from '@angular/common/http';
 import { Component } from '@angular/core';
+import { ImageLoaderConfigService } from 'ionic-image-loader-v5';
+import { IonicImageLoaderComponent } from 'ionic-image-loader-v5';
 
 @Component({
   selector: 'app-home',
@@ -10,7 +12,11 @@ import { Component } from '@angular/core';
 })
 export class HomePage {
 
-  constructor(private http: HttpClient, private cache: CacheService) {}
+  constructor(private http: HttpClient, private cache: CacheService, private imageLoaderConfig: ImageLoaderConfigService) {
+    // this.imageLoaderConfig.enableSpinner(true);
+    this.imageLoaderConfig.enableFallbackAsPlaceholder(true);
+    this.imageLoaderConfig.setFallbackUrl('https://www.ladn.eu/wp-content/uploads/2016/08/6356938644488566691013182599_grumpy-cat-1200x630.jpg');
+  }
   public apiData: any = null;
 
   ionViewDidEnter(){
@@ -34,5 +40,10 @@ export class HomePage {
   clearView(){
     this.apiData = null;
 
+  }
+
+  onImageLoad(imgLoader: IonicImageLoaderComponent) {
+    console.log(imgLoader);
+    console.log("Chargement images de la liste youhouhou");
   }
 }

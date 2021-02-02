@@ -26,7 +26,7 @@
   <ion-list>
     <ion-item *ngFor="let image of apiData">
       <ion-thumbnail slot="start">
-        <img-loader [src]=" 'https://picsum.photos/id/' + image.id +'/100/100'"></img-loader>
+        <img-loader useImg (load)="onImageLoad($event)" [src]=" 'https://picsum.photos/id/' + image.id +'/100/100'"></img-loader>
       </ion-thumbnail>
       <ion-label>
 
