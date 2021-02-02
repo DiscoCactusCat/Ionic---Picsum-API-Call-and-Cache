@@ -13,8 +13,22 @@
     </ion-toolbar>
   </ion-header>
 
-  <div id="container">
-    <strong>Ready to create an app?</strong>
-    <p>Start with Ionic <a target="_blank" rel="noopener noreferrer" href="https://ionicframework.com/docs/components">UI Components</a></p>
-  </div>
+  <ion-button (click)="getData()" expand="block"  shape="round">
+    Get data
+  </ion-button>
+  <ion-button (click)="clearCache()" expand="block" fill="clear" shape="round">
+    Clear cache
+  </ion-button>
+
+  <ion-list>
+    <ion-item *ngFor="let image of apiData">
+      <ion-thumbnail slot="start">
+        <img [src]=" 'https://picsum.photos/id/' + image.id +'/100/100'" />
+      </ion-thumbnail>
+      <ion-label>
+        <h2>{{image.author}}</h2>
+        <a [href]="image.download_url" target="_blank">{{image.download_url}}</a>
+      </ion-label>
+    </ion-item>
+  </ion-list>
 </ion-content>
