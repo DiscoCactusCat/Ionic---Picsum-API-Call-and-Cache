@@ -18,7 +18,7 @@ export class HomePage {
     this.imageLoaderConfig.setFallbackUrl('https://www.ladn.eu/wp-content/uploads/2016/08/6356938644488566691013182599_grumpy-cat-1200x630.jpg');
   }
   public apiData: any = null;
-
+  public searchText: string;
   ionViewDidEnter(){
 
   }
@@ -45,5 +45,17 @@ export class HomePage {
   onImageLoad(imgLoader: IonicImageLoaderComponent) {
     console.log(imgLoader);
     console.log("Chargement images de la liste youhouhou");
+  }
+
+  onSearchChange(change){
+    console.log(change.detail.value);
+    console.log(this.searchText);
+
+    const result = this.apiData.filter((item)=>{
+      return item.author.toLowerCase().indexOf(this.searchText.toLowerCase()) > -1;
+
+    })
+    console.log('result:', result);
+    this.apiData = result;
   }
 }

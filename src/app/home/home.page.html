@@ -1,8 +1,6 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
-    <ion-title>
-      Blank
-    </ion-title>
+    <ion-title> Blank </ion-title>
   </ion-toolbar>
 </ion-header>
 
@@ -13,7 +11,7 @@
     </ion-toolbar>
   </ion-header>
 
-  <ion-button (click)="getData()" expand="block"  shape="round">
+  <ion-button (click)="getData()" expand="block" shape="round">
     Get data
   </ion-button>
   <ion-button (click)="clearCache()" expand="block" fill="clear" shape="round">
@@ -23,15 +21,34 @@
     Clear view
   </ion-button>
 
+  <ion-searchbar
+    [(ngModel)]="searchText"
+    animated="true"
+    showCancelButton="focus"
+    cancelButtonText="Custom Cancel"
+    placeholder="Search an author"
+    inputmode="text"
+    type="text"
+    (ionCancel)="getData()"
+    (ionClear)="getData()"
+    (ionInput)="getData()"
+    (ionChange)="onSearchChange($event)"
+    [debounce]="250"
+  ></ion-searchbar>
   <ion-list>
     <ion-item *ngFor="let image of apiData">
       <ion-thumbnail slot="start">
-        <img-loader useImg (load)="onImageLoad($event)" [src]=" 'https://picsum.photos/id/' + image.id +'/100/100'"></img-loader>
+        <img-loader
+          useImg
+          (load)="onImageLoad($event)"
+          [src]=" 'https://picsum.photos/id/' + image.id +'/100/100'"
+        ></img-loader>
       </ion-thumbnail>
       <ion-label>
-
         <h2>{{image.author}}</h2>
-        <a [href]="image.download_url" target="_blank">{{image.download_url}}</a>
+        <a [href]="image.download_url" target="_blank"
+          >{{image.download_url}}</a
+        >
       </ion-label>
     </ion-item>
   </ion-list>
